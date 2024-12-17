@@ -1,0 +1,11 @@
+.visual-slide {
+  position: relative;
+  width: 80%;
+  height: 400px;
+  margin: 0 auto;
+  background-color: skyblue;
+}
+.sw-visual {
+  width: 100%;
+  height: 100%;
+}
