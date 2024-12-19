@@ -39,7 +39,7 @@ function App() {
 
   return (
     <div>
-      <h1>카카오 지도: 마커 출력하기</h1>
+      <h1>카카오 지도: fsdfsfsfsfd</h1>
       <Map
         center={{ lat: 33.5563, lng: 126.79581 }}
         style={{ width: "800px", height: "600px" }}
