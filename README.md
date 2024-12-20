@@ -1,364 +1,154 @@
-# Nivo Chart
+# 날짜를 다루는 라이브러리
 
-- [Nivo Git](https://github.com/plouc/nivo#readme)
-- [Nivo](https://nivo.rocks/)
+- 참고) [html 특수기호](https://dev-handbook.tistory.com/23)
 
-## 설치
+## 1. moment
 
-- 기본: `npm i @nivo/core`
+### 1.1. 설치
 
-## 각 차트 모양을 보고 설치를 별도 진행
+- [npm 설치](https://www.npmjs.com/package/moment)
+- [site](https://momentjs.com/)
+- `npm i moment`
 
-- Line 차트라면 `npm i @nivo/line`
-- Bar 차트라면 `npm i @nivo/bar`
+### 1.2. 참조
 
-## 실습 Line Chart
+- [활용참조](https://bolob.tistory.com/entry/JavaScript-Momentjs-%EC%82%AC%EC%9A%A9%EB%B2%95-%ED%98%84%EC%9E%AC-%EB%82%A0%EC%A7%9C-%EB%82%A0%EC%A7%9C-%ED%8F%AC%EB%A7%B7-%EB%82%A0%EC%A7%9C-%EB%B9%84%EA%B5%90)
+- [플러그인참조](https://shiro21.tistory.com/405)
+
+### 1.3. 활용예
+
+- App.jsx
 
 ```jsx
-import { ResponsiveLine } from "@nivo/line";
+import moment from "moment";
+
+// 서버에서 Response 된 데이터
 const getData = [
   {
-    id: "japan",
-    color: "hsl(144, 70%, 50%)",
-    data: [
-      {
-        x: "plane",
-        y: 217,
-      },
-      {
-        x: "helicopter",
-        y: 42,
-      },
-      {
-        x: "boat",
-        y: 260,
-      },
-      {
-        x: "train",
-        y: 152,
-      },
-      {
-        x: "subway",
-        y: 36,
-      },
-      {
-        x: "bus",
-        y: 199,
-      },
-      {
-        x: "car",
-        y: 60,
-      },
-      {
-        x: "moto",
-        y: 262,
-      },
-      {
-        x: "bicycle",
-        y: 51,
-      },
-      {
-        x: "horse",
-        y: 196,
-      },
-      {
-        x: "skateboard",
-        y: 16,
-      },
-      {
-        x: "others",
-        y: 3,
-      },
-    ],
+    id: 1,
+    title: "swaggr 완료",
+    createAt: "2024-12-13T10:00:00Z",
   },
   {
-    id: "france",
-    color: "hsl(79, 70%, 50%)",
-    data: [
-      {
-        x: "plane",
-        y: 27,
-      },
-      {
-        x: "helicopter",
-        y: 79,
-      },
-      {
-        x: "boat",
-        y: 47,
-      },
-      {
-        x: "train",
-        y: 134,
-      },
-      {
-        x: "subway",
-        y: 251,
-      },
-      {
-        x: "bus",
-        y: 47,
-      },
-      {
-        x: "car",
-        y: 213,
-      },
-      {
-        x: "moto",
-        y: 47,
-      },
-      {
-        x: "bicycle",
-        y: 1,
-      },
-      {
-        x: "horse",
-        y: 260,
-      },
-      {
-        x: "skateboard",
-        y: 266,
-      },
-      {
-        x: "others",
-        y: 73,
-      },
-    ],
-  },
-  {
-    id: "us",
-    color: "hsl(15, 70%, 50%)",
-    data: [
-      {
-        x: "plane",
-        y: 241,
-      },
-      {
-        x: "helicopter",
-        y: 147,
-      },
-      {
-        x: "boat",
-        y: 119,
-      },
-      {
-        x: "train",
-        y: 31,
-      },
-      {
-        x: "subway",
-        y: 176,
-      },
-      {
-        x: "bus",
-        y: 155,
-      },
-      {
-        x: "car",
-        y: 68,
-      },
-      {
-        x: "moto",
-        y: 278,
-      },
-      {
-        x: "bicycle",
-        y: 290,
-      },
-      {
-        x: "horse",
-        y: 38,
-      },
-      {
-        x: "skateboard",
-        y: 293,
-      },
-      {
-        x: "others",
-        y: 184,
-      },
-    ],
-  },
-  {
-    id: "germany",
-    color: "hsl(84, 70%, 50%)",
-    data: [
-      {
-        x: "plane",
-        y: 64,
-      },
-      {
-        x: "helicopter",
-        y: 157,
-      },
-      {
-        x: "boat",
-        y: 259,
-      },
-      {
-        x: "train",
-        y: 158,
-      },
-      {
-        x: "subway",
-        y: 163,
-      },
-      {
-        x: "bus",
-        y: 12,
-      },
-      {
-        x: "car",
-        y: 203,
-      },
-      {
-        x: "moto",
-        y: 169,
-      },
-      {
-        x: "bicycle",
-        y: 95,
-      },
-      {
-        x: "horse",
-        y: 80,
-      },
-      {
-        x: "skateboard",
-        y: 119,
-      },
-      {
-        x: "others",
-        y: 220,
-      },
-    ],
-  },
-  {
-    id: "norway",
-    color: "hsl(61, 70%, 50%)",
-    data: [
-      {
-        x: "plane",
-        y: 199,
-      },
-      {
-        x: "helicopter",
-        y: 204,
-      },
-      {
-        x: "boat",
-        y: 112,
-      },
-      {
-        x: "train",
-        y: 1,
-      },
-      {
-        x: "subway",
-        y: 154,
-      },
-      {
-        x: "bus",
-        y: 281,
-      },
-      {
-        x: "car",
-        y: 76,
-      },
-      {
-        x: "moto",
-        y: 214,
-      },
-      {
-        x: "bicycle",
-        y: 196,
-      },
-      {
-        x: "horse",
-        y: 251,
-      },
-      {
-        x: "skateboard",
-        y: 220,
-      },
-      {
-        x: "others",
-        y: 275,
-      },
-    ],
+    id: 2,
+    title: "react 완료",
+    createAt: "2024-12-18T10:00:00Z",
   },
 ];
+
 function App() {
+  // 오늘의 날짜
+  const todayMoment = moment().format("YYYY-MM-DD");
   return (
-    <div style={{ width: "80%", height: 500, margin: "0 auto" }}>
-      <ResponsiveLine
-        data={getData}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-        xScale={{ type: "point" }}
-        yScale={{
-          type: "linear",
-          min: "auto",
-          max: "auto",
-          stacked: true,
-          reverse: false,
-        }}
-        yFormat=" >-.2f"
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: "transportation",
-          legendOffset: 36,
-          legendPosition: "middle",
-          truncateTickAt: 0,
-        }}
-        axisLeft={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: "count",
-          legendOffset: -40,
-          legendPosition: "middle",
-          truncateTickAt: 0,
-        }}
-        pointSize={10}
-        pointColor={{ theme: "background" }}
-        pointBorderWidth={2}
-        pointBorderColor={{ from: "serieColor" }}
-        pointLabel="data.yFormatted"
-        pointLabelYOffset={-12}
-        enableTouchCrosshair={true}
-        useMesh={true}
-        legends={[
-          {
-            anchor: "bottom-right",
-            direction: "column",
-            justify: false,
-            translateX: 100,
-            translateY: 0,
-            itemsSpacing: 0,
-            itemDirection: "left-to-right",
-            itemWidth: 80,
-            itemHeight: 20,
-            itemOpacity: 0.75,
-            symbolSize: 12,
-            symbolShape: "circle",
-            symbolBorderColor: "rgba(0, 0, 0, .5)",
-            effects: [
-              {
-                on: "hover",
-                style: {
-                  itemBackground: "rgba(0, 0, 0, .03)",
-                  itemOpacity: 1,
-                },
-              },
-            ],
-          },
-        ]}
-        animate={false}
-      />
+    <div>
+      <h1>moment 활용 날짜관련</h1>
+      <div>
+        <p>오늘은 {todayMoment}</p>
+        {getData.map(item => {
+          return (
+            <p key={item.id}>
+              아이디 : {item.id} 제목 : {item.title} 날짜 :{" "}
+              {moment(item.createAt).format("YYYY-MM-DD")}
+            </p>
+          );
+        })}
+
+        <h2>moment 를 활용한 5일 뒤 날짜 계산하기 </h2>
+        {getData.map(item => {
+          return (
+            <p key={item.id}>
+              아이디 : {item.id} 제목 : {item.title} 5일 뒤의 날짜 :{" "}
+              {moment(item.createAt).add(5, "days").format("YYYY-MM-DD")}
+            </p>
+          );
+        })}
+        <h3>moment 를 활용한 시간이 얼마나 지났는지? </h3>
+        {getData.map(item => {
+          return (
+            <p key={item.id}>
+              아이디 : {item.id} 제목 : {item.title} 얼마나 지났는지 :{" "}
+              {moment(item.createAt).fromNow()}
+            </p>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+export default App;
+```
+
+## 2. Dayjs
+
+### 2.1. 설치
+
+- [npm 설치](https://www.npmjs.com/package/dayjs)
+- [사이트](https://day.js.org/)
+- `npm i dayjs`
+
+### 2.2. 참조
+
+- [활용참조](https://velog.io/@hongsoom/Library-day.js-%EB%82%A0%EC%A7%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC)
+
+### 2.4. 활용예
+
+- App.jsx
+
+```jsx
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
+
+// 서버에서 Response 된 데이터
+const getData = [
+  {
+    id: 1,
+    title: "swaggr 완료",
+    createAt: "2024-12-13T10:00:00Z",
+  },
+  {
+    id: 2,
+    title: "react 완료",
+    createAt: "2024-12-18T10:00:00Z",
+  },
+];
+
+function App() {
+  // 오늘의 날짜
+  const todayDayjs = dayjs().format("YYYY-MM-DD");
+  return (
+    <div>
+      <h1>Dayjs 활용 날짜관련</h1>
+      <div>
+        <p>오늘은 {todayDayjs}</p>
+        {getData.map(item => {
+          return (
+            <p key={item.id}>
+              아이디 : {item.id} 제목 : {item.title} 날짜 :{" "}
+              {dayjs(item.createAt).format("YYYY-MM-DD")}
+            </p>
+          );
+        })}
+
+        <h2>Dayjs 를 활용한 5일 뒤 날짜 계산하기 </h2>
+        {getData.map(item => {
+          return (
+            <p key={item.id}>
+              아이디 : {item.id} 제목 : {item.title} 5일 뒤의 날짜 :{" "}
+              {dayjs(item.createAt).add(5, "day").format("YYYY-MM-DD")}
+            </p>
+          );
+        })}
+        <h3>moment 를 활용한 시간이 얼마나 지났는지? </h3>
+        {getData.map(item => {
+          return (
+            <p key={item.id}>
+              아이디 : {item.id} 제목 : {item.title} 얼마나 지났는지 :{" "}
+              {dayjs(item.createAt).fromNow()}
+            </p>
+          );
+        })}
+      </div>
     </div>
   );
 }
