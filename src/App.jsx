@@ -16,13 +16,17 @@ const loginSchema = yup.object({
     .required("비밀번호는 필수 입니다."),
   ufile: yup
     .mixed()
-    .required("파일은 필수 입니다.")
+    .test("required", "파일은 필수 입니다.", value => {
+      return value && value.length > 0;
+    })
     .test("filesize", "파일 크기는 2MB 이하만 가능합니다.", value => {
       return value && value[0]?.size <= 2 * 1024 * 1024; // 2MB 이하
     }),
   userimg: yup
     .mixed()
-    .required("사용자 이미지는 필수 입니다.")
+    .test("required", "사용자 이미지는 필수 입니다.", value => {
+      return value && value.length > 0;
+    })
     .test("filesize", "파일 크기는 2MB 이하만 가능합니다.", value => {
       return value && value[0]?.size <= 2 * 1024 * 1024; // 2MB 이하
     })
