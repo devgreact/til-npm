@@ -16,12 +16,15 @@
     "@nivo/line": "^0.88.0",
     "axios": "^1.7.9",
     "dayjs": "^1.11.13",
+    "dompurify": "^3.2.3",
     "moment": "^2.30.1",
+    "quill": "^2.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.54.1",
     "react-icons": "^5.4.0",
     "react-kakao-maps-sdk": "^1.1.27",
+    "react-quill": "^2.0.0",
     "swiper": "^11.1.15",
     "yup": "^1.6.1"
   },
@@ -39,5 +42,6 @@
     "globals": "^15.12.0",
     "prettier": "^3.4.2",
     "vite": "^6.0.1"
-  }
+  },
+  "proxy": "http://192.168.0.47:8090/"
 }
