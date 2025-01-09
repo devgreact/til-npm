@@ -1,13 +1,14 @@
-import { Provider } from "react-redux";
 import Counter from "./components/Counter";
-import store from "./store/store";
+import Todo from "./components/Todo";
+import UserInfo from "./components/UserInfo";
 
 function App() {
   return (
-    // 전연 store 를 활용함.
-    <Provider store={store}>
+    <div>
       <Counter />
-    </Provider>
+      <Todo />
+      <UserInfo />
+    </div>
   );
 }
 export default App;
