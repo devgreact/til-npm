@@ -1,421 +1,395 @@
-# Redux Toolkit (RTK)
+# Recoil
 
-- 전역 상태(즉, Context) 를 관리하는 `상태관리도구`
-  : Context API (리액트에 빌트인)
-  : Reudx, Redux Toolkit, Recoil, Zustands
+- 장점 : context state 관리가 참 쉽다.
+- 단점 : 업데이트가 없다. (개발자 퇴사)
+- https://recoiljs.org/ko/
+- `npm i recoil`
 
-## 관련 사이트
+## 코딩 컨벤션
 
-- https://redux.js.org/
-- https://ko.redux.js.org/introduction/getting-started/
+- `/src/atoms 폴더` 생성
+  : `/src/states 폴더` 생성을 하는 경우도 있어요.
+- `/src/selectors 폴더` 생성
+  : 만들지 않기도 함.
 
-## 레퍼런스 사이트에서 RTK 를 추천함.
+## 기초 코드
 
-- `npm install @reduxjs/toolkit`
-- `npm install redux`
-- `npm i react-redux`
+### 1. atoms 폴더에 atom 파일 만들기
 
-## RTK 의 기본 예제(`순서를 준수`하자.)
-
-- 학습순서는 `무조건 순서대로` 하셔야 합니다.
-- 폴더구조, 파일명 등등
-- `/src/store 폴더` 생성 (전역 state 보관장소)
-  : `store.js 파일` 생성
+- atom 은 각각의 state 를 정의하는 것.
+- `/src/atoms/counterAtom.js 파일` 생성
 
 ```js
-// store 설정
-// store 는 전역에서 사용할 state 를 말합니다.
-// 회사에서는 /src/store 폴더를 주로 생성합니다.
-// store 는 1개만 만들 수 있습니다.
-// 즉, 전역 state 는 1개만 만들 수 있습니다.
+import { atom } from "recoil";
 
-import { configureStore } from "@reduxjs/toolkit";
-
-// 파일명은 주로 store.js 라고 칭합니다.
-const store = configureStore({
-  reducer: {
-    // store 를 쪼개서 즉, slice 해서 사용합니다.
-  },
+export const counterAtom = atom({
+  key: "counterAtom", // state 를 구분하는 키
+  default: 0, // 초기값
 });
-
-export default store;
-```
-
-- `/src/features/counter 폴더` 생성
-  : `counterSlice.js`
-
-```js
-import { createSlice } from "@reduxjs/toolkit";
-
-// 초기값 (상태 관리할 데이터)
-const initialState = {
-  count: 0,
-};
-// 코딩 컨벤션
-// Slice 는 store 를 쪼개서 사용한다는 의미
-const counterSlice = createSlice({
-  // 슬라이스 구분 이름
-  name: "counterSlice", // 문자열
-  // 슬라이스 초기 값
-  initialState,
-  // store/counterSlice 에 저장된 값 갱신 함수
-  // 상태를 갱신해 주는 함수 묶음
-  reducers: {
-    add: state => {
-      state.count += 1;
-    },
-    minus: state => {
-      state.count -= 1;
-    },
-    reset: state => {
-      state.count = 1;
-    },
-  },
+export const loginAtom = atom({
+  key: "loginAtom",
+  default: false,
 });
-// Reduce 함수를 외부로 내보내서 dispatch 해주도록
-// action :  type 의 구분, payload 전달
-export const { add, minus, reset } = counterSlice.actions;
-
-export default counterSlice.reducer;
 ```
 
-- `/src/store/store.js`
-  : Slice 로 만든 reducer 배치
-
-```js
-// store 설정
-// store 는 전역에서 사용할 state 를 말합니다.
-// 회사에서는 /src/store 폴더를 주로 생성합니다.
-// store 는 1개만 만들 수 있습니다.
-// 즉, 전역 state 는 1개만 만들 수 있습니다.
-
-import { configureStore } from "@reduxjs/toolkit";
-// 카운터용 Reducer 를 활용
-import counterReducer from "../features/counter/counterSlice";
-// 파일명은 주로 store.js 라고 칭합니다.
-const store = configureStore({
-  reducer: {
-    // store 를 쪼개서 즉, slice 해서 사용합니다.
-    conuter: counterReducer,
-  },
-});
-
-export default store;
-```
-
-- `/src/components/Counter.jsx` 생성
-
-```jsx
-import { useDispatch, useSelector } from "react-redux";
-// store 에 저장된 Slice 중 어떤 Slice의 Action 을 쓸것인가
-import { add, minus, reset } from "../features/counter/counterSlice";
-function Counter() {
-  // RTK 의 store 를 불러들여서 그중 counter 를 사용하겠다.
-  // 직접 state 의 값에 접근
-  // const count = useSelector(state => state.counter.count);
-  // 객체 구조분해 할당으로 접근
-  const { count } = useSelector(state => state.counter);
-
-  // RTK 의 store 의 counter 의 값 갱신 dispatch 사용하겠다.
-  const dispatch = useDispatch();
-
-  return (
-    <div>
-      <p>카운터 값 : {count}</p>
-      <button onClick={() => dispatch(add())}>증가</button>
-      <button onClick={() => dispatch(minus())}>감소</button>
-      <button onClick={() => dispatch(reset())}>리셋</button>
-    </div>
-  );
-}
-export default Counter;
-```
-
-- `/src/App.jsx` 에 Provider 셋팅 (`전역 store 접근`)
-
-```jsx
-import { Provider } from "react-redux";
-import Counter from "./components/Counter";
-import store from "./store/store";
-
-function App() {
-  return (
-    // 전연 store 를 활용함.
-    <Provider store={store}>
-      <Counter />
-    </Provider>
-  );
-}
-export default App;
-```
-
-## todoSlice 추가해 보기
-
-- `/src/feature/todo 폴더` 생성
-- `/src/feature/todo/todoSlice.js 파일` 생성
-
-```js
-import { createSlice } from "@reduxjs/toolkit";
-
-const initialState = [];
-
-const todoSlice = createSlice({
-  name: "todoSlice",
-  // 최초로 보관 데이터
-  initialState,
-  // reducer 함수 : store 의  todoSlice 의 state 를 갱신
-  // state 는 slice 에 보관하고 있는 데이터
-  // action 은 state 에 업데이트할 새로운 데이터
-  reducers: {
-    // action {id:Date.now(), title: "안녕하세요", completed: false}
-    // dispatch( addTodo("안녕") )
-    addTodo: (state, action) => {
-      state.push({ id: Date.now(), title: action.payload, completed: false });
-    },
-    // action id:기존아이디
-    // dispatch( toggleTodo(452347621) )
-    toggleTodo: (state, action) => {
-      // 배열.find 는 true 인 요소를 찾는다.
-      const todo = state.find(item => item.id === action.payload);
-      if (todo) {
-        todo.completed = !todo.completed;
-      }
-    },
-    // action id:기존아이디
-    // dispatch( deleteTodo(1234657689) )
-    deleteTodo: (state, action) => {
-      return state.filter(item => item.id !== action.payload);
-    },
-  },
-});
-// dispatch action 함수 내보내기
-export const { addTodo, toggleTodo, deleteTodo } = todoSlice.actions;
-// 기본 리듀서를 내보냄
-export default todoSlice.reducer;
-```
-
-- `/src/store/sotre.js 에 todoSlice 추가`한다.
-
-```js
-// store 설정
-// store 는 전역에서 사용할 state 를 말합니다.
-// 회사에서는 /src/store 폴더를 주로 생성합니다.
-// store 는 1개만 만들 수 있습니다.
-// 즉, 전역 state 는 1개만 만들 수 있습니다.
-
-import { configureStore } from "@reduxjs/toolkit";
-// 카운터용 Reducer 를 활용
-import counterReducer from "../features/counter/counterSlice";
-// todo Reduce 를 활용
-import todoReducer from "../features/todo/todoSlice";
-// 파일명은 주로 store.js 라고 칭합니다.
-const store = configureStore({
-  reducer: {
-    // store 를 쪼개서 즉, slice 해서 사용합니다.
-    counter: counterReducer,
-    todo: todoReducer,
-  },
-});
-
-export default store;
-```
-
-- /src/App.jsx 가 아니고, `main.jsx 에 Provider` 배치
+- `main.jsx 에 RecoilRoot 설정`
 
 ```jsx
 import { createRoot } from "react-dom/client";
+import { RecoilRoot } from "recoil";
 import App from "./App.jsx";
 import "./index.css";
-import { Provider } from "react-redux";
-import store from "./store/store.js";
 
 createRoot(document.getElementById("root")).render(
   // 전연 store 를 활용함.
-  <Provider store={store}>
+  <RecoilRoot>
     <App />
-  </Provider>,
+  </RecoilRoot>,
 );
 ```
 
-- /src/components/Todo.jsx
+- `src/components/CounterAtom.jsx 활용`
 
 ```jsx
-import { useDispatch, useSelector } from "react-redux";
-import { addTodo, deleteTodo, toggleTodo } from "../features/todo/todoSlice";
+import { useRecoilState } from "recoil";
+import { counterAtom, loginAtom } from "../atoms/counterAtom";
 
-function Todo() {
-  // store 의  todoSlice 의 state 출력
-  const todos = useSelector(state => state.todo);
-  const dispatch = useDispatch();
-
+const CounterAtom = () => {
+  const [count, setCount] = useRecoilState(counterAtom);
+  const [isLogin, setIsLogin] = useRecoilState(loginAtom);
   return (
     <div>
-      <h1>Todo</h1>
+      <h1>로그인상태: {isLogin ? "로그인중" : "로그아웃 중"}</h1>
+      <button onClick={() => setIsLogin(true)}>로그인</button>
+      <button onClick={() => setIsLogin(false)}>로그아웃</button>
+      <h1>CounterAtom : {count}</h1>
+      <button onClick={() => setCount(count + 1)}>증가</button>
+      <button onClick={() => setCount(count - 1)}>감소</button>
+    </div>
+  );
+};
+export default CounterAtom;
+```
+
+## 응용예제(Todo)
+
+- `/src/atoms/TodoListAtoms.js` 생성
+
+```js
+import { atom } from "recoil";
+
+export const todoListAtom = atom({
+  key: "todoListAtom", // atom 구분 문자열 즉, 키값
+  default: [], // 기본 할일 배열의 목록
+});
+```
+
+- `/src/components/TodoListAtom.jsx 파일` 활용예
+
+```jsx
+import { useRecoilState } from "recoil";
+import { todoListAtom } from "../atoms/TodoListAtom";
+import { useState } from "react";
+
+function TodoListAtom() {
+  const [todos, setTodos] = useRecoilState(todoListAtom);
+  const [inputValue, setInputValue] = useState("");
+  //   할일 추가
+  const addTodo = () => {
+    if (inputValue.trim()) {
+      setTodos([
+        ...todos,
+        { id: Date.now(), title: inputValue, completed: false },
+      ]);
+    }
+    setInputValue("");
+  };
+  // 할일 삭제
+  const deleteTodo = id => {
+    setTodos(todos.filter(item => item.id !== id));
+  };
+  const toggleTodo = id => {
+    setTodos(
+      todos.map(item =>
+        item.id === id ? { ...item, completed: !item.completed } : item,
+      ),
+    );
+  };
+  return (
+    <div>
+      <h1>TodoListAtom</h1>
       <div>
-        {todos.map(item => (
-          <div key={item.id}>
-            {item.title}
-            <button onClick={() => dispatch(toggleTodo(item.id))}>변경</button>
-            <button onClick={() => dispatch(deleteTodo(item.id))}>삭제</button>
-          </div>
-        ))}
-        <button onClick={() => dispatch(addTodo("안녕할일"))}>추가</button>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={e => setInputValue(e.target.value)}
+        />
+        <button onClick={() => addTodo()}>추가</button>
+        <ul>
+          {/* 목록출력 */}
+          {todos.map(item => (
+            <li key={item.id}>
+              <p
+                onClick={() => toggleTodo(item.id)}
+                style={{
+                  textDecoration: item.completed ? "line-through" : "none",
+                }}
+              >
+                {item.title}
+              </p>
+              <button onClick={() => deleteTodo(item.id)}>삭제</button>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
 }
-export default Todo;
+export default TodoListAtom;
 ```
 
-## userSlice 추가해 보기
+### Selector 를 이용한 데이터 변경 및 필터링 작업
 
-- `/src/feature/user 폴더` 생성
-- `/src/feature/user/userSlice.js 파일` 생성
+- `/src/selectors/todoSelector.js 파일` 생성
 
 ```js
-import { createSlice } from "@reduxjs/toolkit";
+// Recoil 에서 관리하는 데이터에서
 
-const initialState = {};
+import { selector } from "recoil";
+import { todoListAtom } from "../atoms/TodoListAtom";
 
-const userSlice = createSlice({
-  name: "userSlice",
-  initialState,
-  reducers: {
-    showInfo: state => {
-      console.log("사용자 정보 : ", state);
-    },
+// 완료된 항목만 필터링 해서 출력해 보기
+export const completedTodosSelector = selector({
+  key: "completedTodosSelector",
+  get: ({ get }) => {
+    const todos = get(todoListAtom);
+    return todos.filter(item => item.completed);
   },
 });
-export const { showInfo } = userSlice.actions;
-export default userSlice.reducer;
 ```
 
-- `/src/store/sotre.js 에 userSlice 추가`한다.
-
-```js
-// store 설정
-// store 는 전역에서 사용할 state 를 말합니다.
-// 회사에서는 /src/store 폴더를 주로 생성합니다.
-// store 는 1개만 만들 수 있습니다.
-// 즉, 전역 state 는 1개만 만들 수 있습니다.
-
-import { configureStore } from "@reduxjs/toolkit";
-// 카운터용 Reducer 를 활용
-import counterReducer from "../features/counter/counterSlice";
-// todo Reduce 를 활용
-import todoReducer from "../features/todo/todoSlice";
-// 사용자 정보
-import userReducer from "../features/user/userSlice";
-// 파일명은 주로 store.js 라고 칭합니다.
-const store = configureStore({
-  reducer: {
-    // store 를 쪼개서 즉, slice 해서 사용합니다.
-    counter: counterReducer,
-    todo: todoReducer,
-    user: userReducer,
-  },
-});
-
-export default store;
-```
-
-- `userSlice.js` 에 비동기 API 연동 추가
-  : extraReducers 와 createAsncThunk 를 체크하자.
-
-```js
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-
-const initialState = {
-  loading: false,
-  data: [],
-  error: null,
-};
-// 비동기 작업
-// redux toolkit 에 있는 외부 Api 연동을 위한 AsyncThunk 만들기
-export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
-  const res = await axios.get("https://jsonplaceholder.typicode.com/users");
-  return res.data;
-});
-export const fetchUserOne = createAsyncThunk("user/fetchUserOne", async () => {
-  const res = await axios.get("https://jsonplaceholder.typicode.com/users/1");
-  return res.data;
-});
-
-const userSlice = createSlice({
-  name: "userSlice",
-  initialState,
-  reducers: {
-    showInfo: state => {
-      console.log("사용자 정보 : ", state);
-    },
-  },
-  // 비동기 즉, api 연동 작업후 slice 의 state 관리
-  extraReducers: builder => {
-    builder
-      .addCase(fetchUser.pending, (state, action) => {
-        // 연결중..
-        // console.log("fetchUser.pending : ", action.payload);
-        state.loading = true;
-        state.error = null;
-        // state.data = [];
-      })
-      .addCase(fetchUser.fulfilled, (state, action) => {
-        // 성공적 연결 및 데이터출력
-        // console.log("fetchUser.fulfilled : ", action.payload);
-        state.loading = false;
-        state.error = null;
-        state.data = action.payload;
-      })
-      .addCase(fetchUser.rejected, (state, action) => {
-        // console.log("fetchUser.rejected : ", action.payload);
-        state.loading = false;
-        state.error = action.payload;
-      })
-
-      .addCase(fetchUserOne.pending, (state, action) => {
-        console.log("fetchUserOne.pending : ", action.payload);
-      })
-      .addCase(fetchUserOne.fulfilled, (state, action) => {
-        console.log("fetchUserOne.fulfilled : ", action.payload);
-      })
-      .addCase(fetchUserOne.rejected, (state, action) => {
-        console.log("fetchUserOne.rejected : ", action.payload);
-      });
-  },
-});
-export const { showInfo } = userSlice.actions;
-export default userSlice.reducer;
-`
-```
-
-- `/src/components/UserInfo.jsx`
+- `/src/components/TodoListSelector.jsx` 활용
 
 ```jsx
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUser, fetchUserOne } from "../features/user/userSlice";
+import { useRecoilValue } from "recoil";
+import { completedTodosSelector } from "../selectors/todoSelector";
 
-function UserInfo() {
-  const dispatch = useDispatch();
-  const { loading, data, error } = useSelector(state => state.user);
-
-  if (loading) {
-    return <div>로딩중</div>;
-  }
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
+function TodoListSelector() {
+  // 나는 todos Atoms 에서 completed:true 것만 가져올래
+  const completedTodos = useRecoilValue(completedTodosSelector);
   return (
     <div>
-      <h1>UserInfo</h1>
-      <button onClick={() => dispatch(fetchUser())}>호출</button>
-      <button onClick={() => dispatch(fetchUserOne())}>개별호출</button>
-      {data.map(item => (
-        <div key={item.id}>{item.name}</div>
-      ))}
+      <h1>완료된 할일목록</h1>
+      <ul>
+        {completedTodos.map(item => (
+          <li key={item.id}>{item.title}</li>
+        ))}
+      </ul>
     </div>
   );
 }
-export default UserInfo;
+export default TodoListSelector;
+```
+
+## 응용예제(쇼핑몰 장바구니)
+
+### atoms
+
+- `/src/atoms/cartAtoms.js`
+
+```js
+import { atom } from "recoil";
+
+export const cartAtom = atom({
+  key: "cartState",
+  default: [],
+});
+```
+
+- `/src/atoms/productAtoms.js`
+
+```js
+import { atom } from "recoil";
+
+export const productAtom = atom({
+  key: "productState",
+  default: [
+    { id: 1, name: "커피", price: 100 },
+    { id: 2, name: "딸기", price: 50 },
+    { id: 3, name: "참외", price: 200 },
+  ],
+});
+```
+
+### selectors
+
+- `/src/selectors/cartSelectors.js`
+
+```js
+import { selector } from "recoil";
+import { cartAtom } from "../atoms/cartAtoms";
+import { productAtom } from "../atoms/productAtoms";
+
+// 총금액 구하기
+export const cartTotalSelector = selector({
+  key: "cartTotal",
+  get: ({ get }) => {
+    // 장바구니
+    const cart = get(cartAtom);
+    // 제품들
+    const products = get(productAtom);
+    return cart.reduce((total, item) => {
+      const product = products.find(pro => item.id === pro.id);
+      // 전체 합산이 필요하다
+      // 현재까지 금액 + (제품가격 * 장바구니 담긴 개수)
+      return total + product.price * item.qty;
+    }, 0);
+  },
+});
+
+// 장바구니 제품총수 구하기
+export const cartItemCounterSelector = selector({
+  key: "cartItemCount",
+  get: ({ get }) => {
+    const cart = get(cartAtom);
+    return cart.reduce((total, item) => total + item.qty, 0);
+  },
+});
+```
+
+- `/src/components/product 폴더` 활용하기
+
+  - ProductList.jsx
+
+  ```jsx
+  import { useRecoilValue } from "recoil";
+  import { productAtom } from "../../atoms/productAtoms";
+  import ProductItem from "./ProductItem";
+
+  function ProductList() {
+    const products = useRecoilValue(productAtom);
+    return (
+      <div>
+        <h1>제품리스트</h1>
+        <div>
+          {products.map(item => (
+            <ProductItem key={item.id} product={item} />
+          ))}
+        </div>
+      </div>
+    );
+  }
+  export default ProductList;
+  ```
+
+  - ProductItem.jsx
+
+  ```jsx
+  /* eslint-disable react/prop-types */
+
+  import { useRecoilState } from "recoil";
+  import { cartAtom } from "../../atoms/cartAtoms";
+
+  function ProductItem({ product }) {
+    const [cart, setCart] = useRecoilState(cartAtom);
+    // 장바구니 담기
+    const addCart = id => {
+      // id 를 전달받으면 cart 에  제품 id 와 qty:개수 업데이트
+      setCart(currentCart => {
+        // 현재 카트에 이미 동일한 id 제품 이 있는 지 검사하자.
+        const existID = currentCart.find(item => item.id === id);
+        // 만약 장바구니에 제품이 담겼다면 개수 증가
+        if (existID) {
+          // 개수 증가
+          return currentCart.map(item =>
+            item.id === id ? { ...item, qty: item.qty + 1 } : item,
+          );
+        }
+        // 새로운 ID 추가 및 개수는 1 로 셋팅
+        return [...currentCart, { id, qty: 1 }];
+      });
+    };
+    return (
+      <div style={{ display: "flex", border: "2px solid #000" }}>
+        <h3>{product.name}</h3>
+        <p>{product.price}원</p>
+        <button onClick={() => addCart(product.id)}>장바구니 담기</button>
+      </div>
+    );
+  }
+  export default ProductItem;
+  ```
+
+- `/src/components/cart 폴더` 활용하기
+  : CartList.jsx
+
+```jsx
+import { useRecoilValue } from "recoil";
+import { cartAtom } from "../../atoms/cartAtoms";
+import CartItem from "./CartItem";
+
+function CartList() {
+  const cart = useRecoilValue(cartAtom);
+  return (
+    <div>
+      <h1>장바구니</h1>
+      <div>
+        {cart.map(item => (
+          <CartItem key={item.id} item={item} />
+        ))}
+      </div>
+    </div>
+  );
+}
+export default CartList;
+```
+
+: CartItem.jsx
+
+```jsx
+import { useRecoilState, useRecoilValue } from "recoil";
+import { productAtom } from "../../atoms/productAtoms";
+import { cartAtom } from "../../atoms/cartAtoms";
+
+/* eslint-disable react/prop-types */
+function CartItem({ item }) {
+  const [cart, setCart] = useRecoilState(cartAtom);
+  const products = useRecoilValue(productAtom);
+  const product = products.find(prd => prd.id === item.id);
+  const removeCart = id => {
+    setCart(currentCart => currentCart.filter(prd => prd.id !== id));
+  };
+
+  return (
+    <div>
+      <h3>제품이름 : {product.name}</h3>
+      <p>수량: {item.qty}</p>
+      <p>가격 : {product.prcie * item.qty}원</p>
+      <button onClick={() => removeCart(item.id)}>삭제</button>
+    </div>
+  );
+}
+export default CartItem;
+```
+
+- `/src/components/cart/CartSummary.jsx`
+
+```jsx
+import { useRecoilValue } from "recoil";
+import {
+  cartItemCounterSelector,
+  cartTotalSelector,
+} from "../../selectors/cartSelectors";
+
+function CartSummary() {
+  const total = useRecoilValue(cartTotalSelector);
+  const count = useRecoilValue(cartItemCounterSelector);
+  return (
+    <div>
+      <p>총 상품 수: {count}</p>
+      <p>총 금액 : {total}원</p>
+    </div>
+  );
+}
+export default CartSummary;
 ```
