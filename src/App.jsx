@@ -1,12 +1,4 @@
-import CartList from "./components/cart/CartList";
-import ProductList from "./components/product/ProductList";
-
 function App() {
-  return (
-    <div>
-      <ProductList />
-      <CartList />
-    </div>
-  );
+  return <div className="bg-brand p-72">Custom Colors and Spacing</div>;
 }
 export default App;
