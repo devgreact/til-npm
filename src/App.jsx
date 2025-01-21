@@ -1,6 +1,6 @@
-import JoinForm from "./components/JoinForm";
+import PwForm from "./components/PwForm";
 
 function App() {
-  return <JoinForm />;
+  return <PwForm />;
 }
 export default App;
