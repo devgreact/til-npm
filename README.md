@@ -1,37 +1,47 @@
-# JWT 프로젝트 반영
+# Axios 를 이용한 파일 과 json 내용 글자 업로드
 
-- 사용자 인증은 2가지가 있습니다.
-- 세션 인증
-- JWT 인증
-- 하이브리드 세션 + JWT 인증 혼합
+```js
+import axios from "axios";
 
-## 1. jwt (JSON Web Token)
+const App = () => {
+  const handleSubmit = async () => {
+    try {
+      const formData = new FormData();
+      // 보내야 하는 데이터
+      const sendData = {
+        email: "1234park@naver.com",
+        upw: "1111",
+        name: "홍길동",
+        phone: "01012345678",
+      };
+      // 문자열을 파일로 만들어야 보내야 한다.
 
-- 복잡한 문자열(토큰)을 서버에서 만들어서 준다.
+      formData.append(
+        "p",
+        new Blob([JSON.stringify(sendData)], { type: "application/json" }),
+      );
 
-## 2. 시나리오
+      if (파일) {
+        formData.append("pic", 파일);
+      }
 
-- 사용자가 로그인을 합니다.
-- Response 로 2개의 값이 오는게 정석입니다.
-- accessToken : 서버에서 만들어서 돌려줌.
-  - api 호출시 첨부함.
-- refreshToken : 서버에서 만들어서 돌려줌.
-  - api 호출시 401 (UnAuthorization) : 인증만료가 되었다.
-  - 인증키 즉 accessToken 만료시 새로 요청을 해서
-    - accessToken 과 refreshToken 을 다시 받는다.
-- 2개의 값을 클라이언트가 보관(Recoil, Context, Cookie 등)합니다.
-- api 를 호출할때 /api/tourlist 할때 accessToken 을 같이 보내줌
+      const res = await axios.post("/api/user/sign-up", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-## 3. refreshToken 있는 경우 처리
-
-### 만료되면 다시 refreshToken 으로 요청하고 다시 새로운 토큰으로 axios 호출한다.
-
-### accessToken 과 refreshToken 을 교체한다.
-
-## 4. 필요로 한 npm 들
-
-- axios
-- react-cookie
-- recoil
-
-## 5. 로그인 후 jwt 정보(2개) 관리하기
+  return (
+    <div>
+      <h1>File 및 json 데이터 post 테스트</h1>
+      <button onClick={() => handleSubmit()}>업로드</button>
+    </div>
+  );
+};
+export default App;
+```
