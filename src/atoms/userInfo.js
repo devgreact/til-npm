@@ -9,3 +9,13 @@ export const userInfo = atom({
     nickName: "",
   },
 });
+
+export const loginInfoState = atom({
+  key: "loginInfoState",
+  default: {
+    userId: 0,
+    roleId: 0,
+    name: "",
+    accessToken: "",
+  },
+});
