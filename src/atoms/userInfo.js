@@ -17,5 +17,6 @@ export const loginInfoState = atom({
     roleId: 0,
     name: "",
     accessToken: "",
+    refreshToken: "",
   },
 });
