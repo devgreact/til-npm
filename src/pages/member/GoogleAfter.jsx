@@ -52,6 +52,12 @@ const GoogleAfter = () => {
           <p>
             프로필 사진: <img src={userInfo.picture} alt="프로필" width={50} />
           </p>
+          <div>
+            사용자 취미 <input type="text" />
+          </div>
+          <div>
+            <button>회원가입</button>
+          </div>
         </div>
       ) : (
         <p>사용자 정보를 불러오는 중...</p>

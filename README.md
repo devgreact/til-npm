@@ -1,83 +1,201 @@
-# KKO 로그인
+# 구글 로그인
 
-- 카카오 개발자 등록 : https://developers.kakao.com
-- 참고 : https://chunws13.tistory.com/63#google_vignette
+- 구글 클라우드 플랫폼 : https://console.cloud.google.com
 
-## 앱 등록 과정
+## 과정
 
 - 과정 1
-  ![Image](https://github.com/user-attachments/assets/db94fa79-ab4b-435b-985b-2af4b993a8ba)
-- 과정 2
-  ![Image](https://github.com/user-attachments/assets/a073f3d0-a558-4b74-9c8b-72da5207b084)
-- 과정 3 (아이콘을 꼭 넣어주자)
-  ![Image](https://github.com/user-attachments/assets/b16546e4-8126-4cba-9535-d887a73f3449)
-- 과정 4
-  ![Image](https://github.com/user-attachments/assets/8e02fff8-e040-4c9d-ab40-37778c673517)
-- 과정 5
-  ![Image](https://github.com/user-attachments/assets/a30ed210-3b3a-4f8e-884a-9f5814752255)
-- 과정 6
-  ![Image](https://github.com/user-attachments/assets/5bcab231-c3cf-474e-8d0d-d624715c19a1)
-- 과정 7
-  ![Image](https://github.com/user-attachments/assets/091155df-35e5-4464-bad3-ff22c7d23387)
-- 과정 8 (리다이렉트 주소 작성)
-  ![Image](https://github.com/user-attachments/assets/091155df-35e5-4464-bad3-ff22c7d23387)
-- 과정 9
-  ![Image](https://github.com/user-attachments/assets/d74fce7f-7db1-448e-87cb-d28fb8eaabdb)
-- 과정 10
-  ![Image](https://github.com/user-attachments/assets/124b4069-15c2-43b0-ae41-09e59d6f0c65)
-- 과정 11
-  ![Image](https://github.com/user-attachments/assets/907c61d2-7405-4853-889d-438fe585649e)
-- 과정 12 (각 키를 env 에 보관해 둠)
-  ![Image](https://github.com/user-attachments/assets/625b383f-ed86-46da-939f-ee203005e833)
-- 과정 13 (동의항목)
-  ![Image](https://github.com/user-attachments/assets/63a64ef7-82b9-4ed5-8f92-4f4d034b27ca)
-  ![Image](https://github.com/user-attachments/assets/c68d8234-5a1f-4ba6-a44a-7033baad3ac4)
-  ![Image](https://github.com/user-attachments/assets/6d26ce45-b381-4b6d-88a4-19c83366c08e)
-- 과정 14 (추가권한)
-  ![Image](https://github.com/user-attachments/assets/62af251c-3440-4476-aa29-f0ee94c6b1c0)
-  ![Image](https://github.com/user-attachments/assets/62af251c-3440-4476-aa29-f0ee94c6b1c0)
-  ![Image](https://github.com/user-attachments/assets/bf4b494b-6103-4959-b93c-68504df67311)
-  ![Image](https://github.com/user-attachments/assets/bf4b494b-6103-4959-b93c-68504df67311)
-  ![Image](https://github.com/user-attachments/assets/09254d76-30b4-48a9-a8ae-2c0d08c08ae8)
+  ![Image](https://github.com/user-attachments/assets/63b66acc-03d4-4286-be25-0e420c6b8149)
+- 과정 2. 프로젝트 생성
+  ![Image](https://github.com/user-attachments/assets/eb09f1e9-c919-48c6-98e2-e0ec82edebb0)
+  ![Image](https://github.com/user-attachments/assets/cecae858-9c80-4a4d-8183-e5f05ebf4e4c)
+  ![Image](https://github.com/user-attachments/assets/1eeec606-1393-496e-ac3b-2b27550424fa)
+  ![Image](https://github.com/user-attachments/assets/4d781b68-9467-4d5b-8410-fab5e53fa768)
+  ![Image](https://github.com/user-attachments/assets/6762a6c0-9b4a-487f-b814-34158f045363)
+  ![Image](https://github.com/user-attachments/assets/781e4d8e-fb9c-46fc-9ed8-df3c4b586101)
+  ![Image](https://github.com/user-attachments/assets/d8db66e9-c613-44bf-b828-a0908800fb18)
+  ![Image](https://github.com/user-attachments/assets/207fa9b8-c4d2-4084-bd21-220a20437dd2)
+  ![Image](https://github.com/user-attachments/assets/cd78691d-c65c-4e4d-b6ee-76d1e84a5536)
+  ![Image](https://github.com/user-attachments/assets/c6171852-2658-4709-99a6-821e52f04c5f)
+  ![Image](https://github.com/user-attachments/assets/25eb3b80-189a-4789-9b8c-015263fd9fd4)
+  ![Image](https://github.com/user-attachments/assets/6c82b794-d46c-4181-bcac-a646c39e50b5)
+  ![Image](https://github.com/user-attachments/assets/06caa206-49ad-4233-9bb7-77da192a89ef)
+  ![Image](https://github.com/user-attachments/assets/a562457f-1e73-4b5c-a316-6c9b5fdfb55c)
+  ![Image](https://github.com/user-attachments/assets/4ce6e1cc-08b1-450d-8464-3cc67959380b)
+  ![Image](https://github.com/user-attachments/assets/3ce2b14d-a12c-4b78-9fb0-f0ae75ef69c6)
+  ![Image](https://github.com/user-attachments/assets/3ce2b14d-a12c-4b78-9fb0-f0ae75ef69c6)
+  ![Image](https://github.com/user-attachments/assets/a40c6062-d83f-4763-884a-5e48feeda812)
+  ![Image](https://github.com/user-attachments/assets/8acc8446-8f46-41c6-99bb-195da385a62b)
+  ![Image](https://github.com/user-attachments/assets/0f0ca565-4e8a-4a1e-8af4-d16be272e764)
+  ![Image](https://github.com/user-attachments/assets/bad41ab4-c1cd-404d-889f-a4363b97ef94)
 
-## .env 파일 작성
+- 과정 3
+  ![Image](https://github.com/user-attachments/assets/2a8779e2-dba2-43c1-ac44-80fda5449caf)
 
-- vite 프로젝트이므로 접두어 `VITE_`가 필수로 작성됨
+## env
 
-```txt
-VITE_KKO_MAP_KEY=Map 키
-VITE_KKO_LOGIN_REST_API_KEY=RESTAPI 키
-VITE_KKO_LOGIN_JS_API_KEY=JS 키
-```
+VITE_KKO_MAP_KEY=본인키
+VITE_KKO_LOGIN_REST_API_KEY=본인키
+VITE_KKO_LOGIN_JS_API_KEY=본인키
+VITE_GOOGLE_CLIENT_ID=본인키
+VITE_GOOGLE_CLIENT_PASS=본인키
 
-## 카카오 로그인 기능 구현
+## 코드 진행
 
-- `/src/kko 폴더` 생성
-- `/src/kko/kkoapi.js 파일` 생성
+- `/src/google 폴더` 생성
+- `/src/google/googleapi.js 파일` 생성
 
 ```js
-// REST Key 처리
-const rest_api_key = import.meta.env.VITE_KKO_LOGIN_REST_API_KEY;
-// 카카오 로그인시 토큰 API 경로
-const auth_code_path = "https://kauth.kakao.com/oauth/authorize";
-// 카카오 로그인 성공시 이동할 경로
-const redirect_uri = "http://localhost:5173/member/kko";
-// 카카오 로그인 후 사용자 정보 API 경로
-const kko_user_api = "https://kapi.kakao.com/v2/user/me";
-// 카카오 로그인시 활용
-export const getKakaoLoginLink = () => {
-  const kakaoURL = `${auth_code_path}?client_id=${rest_api_key}&redirect_uri=${redirect_uri}&response_type=code`;
-  return kakaoURL;
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+const GOOGLE_REDIRECT_URI = "http://localhost:5173/member/google";
+// 구글 로그인시 활용
+export const getGoogleLoginLink = () => {
+  window.location.href = `https://accounts.google.com/o/oauth2/auth?client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${GOOGLE_REDIRECT_URI}&response_type=code&scope=openid email profile`;
+};
+
+export const getGoogleToken = async code => {
+  const REST_API_KEY = GOOGLE_CLIENT_ID;
+  const REDIRECT_URI = GOOGLE_REDIRECT_URI;
+  const SECRET_KEY = import.meta.env.VITE_GOOGLE_CLIENT_PASS;
+  const response = await fetch(
+    `https://oauth2.googleapis.com/token?grant_type=authorization_code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&client_secret=${SECRET_KEY}&code=${code}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+      },
+    },
+  );
+  return response.json();
+};
+
+export const getGoogleUserInfo = async accessToken => {
+  try {
+    const response = await fetch(
+      "https://www.googleapis.com/oauth2/v2/userinfo",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch Google user info");
+    }
+
+    const userData = await response.json();
+    return userData;
+  } catch (error) {
+    console.error("Error fetching Google user info:", error);
+    return null;
+  }
 };
 ```
 
-## 회원가입 페이지 구성
+## 라우터 구성
 
-- `/src/Join.jsx`
+```ts
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Join from "./Join";
+import After from "./pages/member/After";
+import GoogleAfter from "./pages/member/GoogleAfter";
 
-```jsx
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<h1>HOME</h1>} />
+        <Route path="/join" element={<Join />} />
+        <Route path="/member/kko" element={<After />} />
+        <Route path="/member/google" element={<GoogleAfter />} />
+        <Route path="/login" element={<h1>로그인</h1>} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
+export default App;
+```
+
+## 인가 키 처리
+
+- `/src/pages/member/GoogleAfter.jsx 파일` 생성
+
+```ts
+import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getGoogleToken, getGoogleUserInfo } from "../../google/googleapi";
+
+const GoogleAfter = () => {
+  const [userInfo, setUserInfo] = useState(null);
+  const [accessToken, setAccessToken] = useState(null);
+
+  // 카카오 인가 알아내기
+  // http://localhost:5173/member/google?code=4%2F0ASVgi3J34nIJWXBkMWVe23jTDfVuZ57PH74fpzQfqHVnwtknH3sxcOxr6MuJKkvQ__ge7A&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=consent
+  const [URLSearchParams, setURLSearchParams] = useSearchParams();
+  // searchparams 에서 code 알아내기
+  const authCode = URLSearchParams.get("code");
+  console.log(authCode);
+  // 인가 키를 이용해서 Access Token 을 발급 받자
+  const getAccessTokenCall = async () => {
+    try {
+      // Access Token
+      const accessKey = await getGoogleToken(authCode);
+      console.log("accessKey : ", accessKey);
+      if (accessKey) {
+        setAccessToken(accessKey.access_token);
+
+        // 2. 액세스 토큰을 사용하여 사용자 정보 요청
+        const userData = await getGoogleUserInfo(accessKey.access_token);
+        console.log("Google User Info:", userData);
+        setUserInfo(userData);
+      }
+
+      // state 보관
+      //   setUserInfo(info);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //   // 인가 키가 존재한다면 그때 토큰 및 정보 호출
+  useEffect(() => {
+    getAccessTokenCall();
+  }, [authCode]);
+
+  return (
+    <div>
+      <h1>Google OAuth 로그인</h1>
+      <h2>인가 코드: {authCode}</h2>
+      <h2>Access Token: {accessToken ? "✅ 성공적으로 가져옴" : "❌ 없음"}</h2>
+
+      {userInfo ? (
+        <div>
+          <p>아이디: {userInfo.id}</p>
+          <p>이름: {userInfo.name}</p>
+          <p>이메일: {userInfo.email}</p>
+          <p>
+            프로필 사진: <img src={userInfo.picture} alt="프로필" width={50} />
+          </p>
+        </div>
+      ) : (
+        <p>사용자 정보를 불러오는 중...</p>
+      )}
+    </div>
+  );
+};
+export default GoogleAfter;
+
+```
+
+## 로그인 버튼
+
+- `/src/Join.jsx` 수정
+
+```ts
 import { Link } from "react-router-dom";
 import { getKakaoLoginLink } from "./kko/kkoapi";
+import { getGoogleLoginLink } from "./google/googleapi";
 
 function Join() {
   const kakaoLogin = getKakaoLoginLink();
@@ -87,193 +205,11 @@ function Join() {
       <div>
         <Link to={kakaoLogin}>카카오 로그인</Link>
       </div>
+      <div>
+        <button onClick={() => getGoogleLoginLink()}>구글 로그인</button>
+      </div>
     </div>
   );
 }
 export default Join;
-```
-
-## 라우터 구성
-
-- `/src/App.jsx`
-
-```jsx
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Join from "./Join";
-
-const App = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<h1>HOME</h1>} />
-        <Route path="/join" element={<Join />} />
-        <Route path="/login" element={<h1>로그인</h1>} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
-export default App;
-```
-
-## 인증키를 이용한 사용자 정보알아내기
-
-- 카카오 인증 후 정보 파악하기 위한 페이지 구성
-- `/src/pages/member/After.jsx`
-
-```jsx
-import { useSearchParams } from "react-router-dom";
-
-const After = () => {
-  // 카카오 인증 알아내기
-  // http://localhost:5173/member/kko?code=jAP3q9kan1tsRFA1IOYPw89xasovPu4twfaFHox-x3aOSM3Q1SWi0QAAAAQKPCJSAAABlNPHPDrdCc_9be4aqQ
-  const [URLSearchParams, setURLSearchParams] = useSearchParams();
-  // searchparams 에서 code 알아내기
-  const authCode = URLSearchParams.get("code");
-  return <div>인가키 {authCode}</div>;
-};
-export default After;
-```
-
-- 카카오 인가 후 정보 파악하기 위한 라우터 구성
-- `/src/App.jsx` 추가
-
-```jsx
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Join from "./Join";
-import After from "./pages/member/After";
-
-const App = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<h1>HOME</h1>} />
-        <Route path="/join" element={<Join />} />
-        <Route path="/member/kko" element={<After />} />
-        <Route path="/login" element={<h1>로그인</h1>} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
-export default App;
-```
-
-## 인가 키 생성후 Access Token 요청하기
-
-- 인가 키를 이용해서 `Access Token` 을 발급받고
-- 이후로는 `Access Token` 을 이용해서 여러가지 정보를 호출함.
-- `/src/kko/kkoapi.js` 기능 추가
-
-```js
-import axios from "axios";
-
-// REST Key 처리
-const rest_api_key = import.meta.env.VITE_KKO_LOGIN_REST_API_KEY;
-// 카카오 로그인시 토큰 API 경로
-const auth_code_path = "https://kauth.kakao.com/oauth/authorize";
-// 카카오 로그인 성공시 이동후 인증키 파악 경로
-const redirect_uri = "http://localhost:5173/member/kko";
-// 카카오 로그인 후 사용자 정보 API 경로
-const kko_user_api = "https://kapi.kakao.com/v2/user/me";
-// 카카오 로그인시 활용
-export const getKakaoLoginLink = () => {
-  const kakaoURL = `${auth_code_path}?client_id=${rest_api_key}&redirect_uri=${redirect_uri}&response_type=code`;
-  return kakaoURL;
-};
-// Access Token 받기 경로
-const access_token_url = `https://kauth.kakao.com/oauth/token`;
-export const getAccessToken = async authCode => {
-  const header = {
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-    },
-  };
-  const params = {
-    grant_type: "authorization_code",
-    client_id: rest_api_key,
-    redirect_uri: redirect_uri,
-    code: authCode,
-  };
-  const res = await axios.post(access_token_url, params, header);
-  const accessToken = res.data.access_token;
-  return accessToken;
-};
-// 토큰을 이용해서 사용자 정보 호출하기
-export const getMemberWithAccessToken = async accessToken => {
-  try {
-    const response = await axios.get(kko_user_api, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
-      },
-    });
-
-    console.log(response.data);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    return error;
-  }
-};
-```
-
-## 실제 사용자 정보를 호출하기
-
-- `/src/pages/member/After.jsx` 기능 추가 (Access Token 발급 및 사용자 정보 출력)
-
-```jsx
-import { useSearchParams } from "react-router-dom";
-import { getAccessToken, getMemberWithAccessToken } from "../../kko/kkoapi";
-import { useEffect, useState } from "react";
-
-const After = () => {
-  // 카카오 사용자 정보 보관
-  const [userInfo, setUserInfo] = useState(null);
-
-  // 카카오 인가 알아내기
-  // http://localhost:5173/member/kko?code=jAP3q9kan1tsRFA1IOYPw89xasovPu4twfaFHox-x3aOSM3Q1SWi0QAAAAQKPCJSAAABlNPHPDrdCc_9be4aqQ
-  const [URLSearchParams, setURLSearchParams] = useSearchParams();
-  // searchparams 에서 code 알아내기
-  const authCode = URLSearchParams.get("code");
-  // 인가 키를 이용해서 Access Token 을 발급 받자
-  const getAccessTokenCall = async () => {
-    try {
-      // Access Token
-      const accessKey = await getAccessToken(authCode);
-      console.log("accessKey : ", accessKey);
-      // 사용자 정보 호출
-      const info = await getMemberWithAccessToken(accessKey);
-      console.log("info : ", info);
-      // state 보관
-      setUserInfo(info);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  // 인가 키가 존재한다면 그때 토큰 및 정보 호출
-  useEffect(() => {
-    getAccessTokenCall();
-  }, [authCode]);
-
-  return (
-    <div>
-      <h1>인가키 {authCode}</h1>
-      <h2>KKO 로그인 후 </h2>
-      <div>
-        <p>아이디 : {userInfo?.id}</p>
-        <p>닉네임 : {userInfo?.kakao_account.profile.nickname}</p>
-        <p>이메일 : {userInfo?.kakao_account.email}</p>
-        <p>
-          사용자 사진 :{userInfo?.kakao_account.profile.thumbnail_image_url}{" "}
-        </p>
-        <p>
-          추가정보취미 : <input type="text" />
-        </p>
-        <p>
-          <button>회원가입</button>
-        </p>
-      </div>
-    </div>
-  );
-};
-export default After;
 ```
