@@ -18,13 +18,9 @@
 - 과정 6
   ![Image](https://github.com/user-attachments/assets/5bcab231-c3cf-474e-8d0d-d624715c19a1)
 - 과정 7
-
-![Image](https://github.com/user-attachments/assets/091155df-35e5-4464-bad3-ff22c7d23387)
-
+  ![Image](https://github.com/user-attachments/assets/091155df-35e5-4464-bad3-ff22c7d23387)
 - 과정 8 (리다이렉트 주소 작성)
-
-![Image](https://github.com/user-attachments/assets/091155df-35e5-4464-bad3-ff22c7d23387)
-
+  ![Image](https://github.com/user-attachments/assets/091155df-35e5-4464-bad3-ff22c7d23387)
 - 과정 9
   ![Image](https://github.com/user-attachments/assets/d74fce7f-7db1-448e-87cb-d28fb8eaabdb)
 - 과정 10
